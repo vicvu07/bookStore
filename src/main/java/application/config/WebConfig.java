@@ -1,7 +1,7 @@
 package application.config;
 
 
-import application.data.service.*;
+//import application.data.service.*;
 import org.apache.coyote.http11.AbstractHttp11Protocol;
 
 import org.apache.logging.log4j.LogManager;
@@ -55,10 +55,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
 
-    @Bean
+    /*@Bean
     public UserService getUserService() {
         return new UserService();
-    }
+    }*/
 
 
 
