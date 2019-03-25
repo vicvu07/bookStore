@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <title>Hiep Trong Store</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}"/>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/script.js}"></script>
+    <script th:src="@{/js/move-top.js}"></script>
+    <script th:src="@{/js/easing.js}"></script>
+
+</head>
+<body>
+<div th:replace="fragments/header :: header_info"></div>
+<div class="wrap">
+
+    <div class="main">
+        <div class="content">
+
+            <div class="content_bottom">
+                <div class="heading">
+                    <h3>All Books</h3>
+                </div>
+                <div class="sort">
+                    <p>Sort by:
+                        <select>
+                            <option>Lowest Price</option>
+                            <option>Highest Price</option>
+                            <option>Lowest Price</option>
+                            <option>Lowest Price</option>
+                            <option>Lowest Price</option>
+                            <option>In Stock</option>
+                        </select>
+                    </p>
+                </div>
+                <div class="show">
+                    <p>Show:
+                        <select>
+                            <option>4</option>
+                            <option>8</option>
+                            <option>12</option>
+                            <option>16</option>
+                            <option>20</option>
+                            <option>In Stock</option>
+                        </select>
+                    </p>
+                </div>
+                <div class="page-no">
+                    <p>Result Pages:
+                    <ul>
+                        <li><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li>[<a href="#"> Next>>></a>]</li>
+                    </ul>
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="section group" th:each="book : ${vm.getBookVMList()}">
+                <div class="grid_1_of_4 images_1_of_4 ">
+                    <a href="#"><img th:src="${book.getMainImage()}" alt=""/></a>
+                    <div class="discount">
+                        <span class="percentage" th:text="${book.getDiscount()+ '%'}"></span>
+                    </div>
+
+                    <h2 th:text="${book.getName()}"></h2>
+                    <p><span class="strike" th:text="${book.getPrice()+ '$'}""></span><span class="price"
+                                                                                            th:text="${book.getPrice()*book.getDiscount()/100 + ' $'}"></span>
+                    </p>
+                    <div class="button"><span><img src="images/cart.jpg" alt=""/><a href="preview-3.html"
+                                                                                    class="cart-button">Add to Cart</a></span>
+                    </div>
+                    <div class="button"><span><a href="preview-3.html" class="details">Details</a></span></div>
+                </div>
+
+                <!--Nhân bản phần thymeleaf 3 lần-->
+                <div class="grid_1_of_4 images_1_of_4 ">
+                    <a href="#"><img th:src="${book.getMainImage()}" alt=""/></a>
+                    <div class="discount">
+                        <span class="percentage" th:text="${book.getDiscount()+ '%'}"></span>
+                    </div>
+
+                    <h2 th:text="${book.getName()}"></h2>
+                    <p><span class="strike" th:text="${book.getPrice()+ '$'}""></span><span class="price"
+                                                                                            th:text="${book.getPrice()*book.getDiscount()/100 + ' $'}"></span>
+                    </p>
+                    <div class="button"><span><img src="images/cart.jpg" alt=""/><a href="preview-3.html"
+                                                                                    class="cart-button">Add to Cart</a></span>
+                    </div>
+                    <div class="button"><span><a href="preview-3.html" class="details">Details</a></span></div>
+                </div>
+                <div class="grid_1_of_4 images_1_of_4 ">
+                    <a href="#"><img th:src="${book.getMainImage()}" alt=""/></a>
+                    <div class="discount">
+                        <span class="percentage" th:text="${book.getDiscount()+ '%'}"></span>
+                    </div>
+
+                    <h2 th:text="${book.getName()}"></h2>
+                    <p><span class="strike" th:text="${book.getPrice()+ '$'}""></span><span class="price"
+                                                                                            th:text="${book.getPrice()*book.getDiscount()/100 + ' $'}"></span>
+                    </p>
+                    <div class="button"><span><img src="images/cart.jpg" alt=""/><a href="preview-3.html"
+                                                                                    class="cart-button">Add to Cart</a></span>
+                    </div>
+                    <div class="button"><span><a href="preview-3.html" class="details">Details</a></span></div>
+                </div>
+                <div class="grid_1_of_4 images_1_of_4 ">
+                    <a href="#"><img th:src="${book.getMainImage()}" alt=""/></a>
+                    <div class="discount">
+                        <span class="percentage" th:text="${book.getDiscount()+ '%'}"></span>
+                    </div>
+
+                    <h2 th:text="${book.getName()}"></h2>
+                    <p><span class="strike" th:text="${book.getPrice()+ '$'}""></span><span class="price"
+                                                                                            th:text="${book.getPrice()*book.getDiscount()/100 + ' $'}"></span>
+                    </p>
+                    <div class="button"><span><img src="images/cart.jpg" alt=""/><a href="preview-3.html"
+                                                                                    class="cart-button">Add to Cart</a></span>
+                    </div>
+                    <div class="button"><span><a href="preview-3.html" class="details">Details</a></span></div>
+                </div>
+
+            </div>
+            <div class="list-group">
+                <li class="list-group-item list-group-item-success"><h4>Category</h4></li>
+                <a th:href="${'/?categoryId='+category.getId()}" class="list-group-item list-group-item-action"
+                   th:each="category : ${vm.getCategoryVMList()}">
+                    <span th:text="${category.getName()}"></span>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer_info"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*
+        var defaults = {
+              containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
+         };
+        */
+
+        $().UItoTop({easingType: 'easeOutQuart'});
+
+    });
+</script>
+<a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+<link href="css/flexslider.css" rel="stylesheet" type="text/css" media="all"/>
+<script src="js/jquery.flexslider.js"></script>
+<script type="text/javascript">
+    $(function () {
+        SyntaxHighlighter.all();
+    });
+    $(window).load(function () {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            start: function (slider) {
+                $('body').removeClass('loading');
+            }
+        });
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.9.0/sweetalert2.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+</body>
+</html>
+
